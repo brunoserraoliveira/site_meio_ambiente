@@ -6,10 +6,13 @@
     <title>Clima em Ação - Serra Talhada</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- RESET E VARIÁVEIS --- */
+        html {
+            scroll-behavior: smooth;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -19,21 +22,15 @@
 
         :root {
             --verde-escuro: #004d1a;
-            --verde-principal: #1b8536;
-            --verde-claro: #74c673;
-            --verde-destaque: #86efac;
             --branco: #ffffff;
             --cinza-fundo: #f4f7f5;
-            --texto-escuro: #2d3748;
         }
 
         body {
             background-color: var(--cinza-fundo);
-            color: var(--texto-escuro);
             line-height: 1.6;
         }
 
-        /* --- HEADER / NAV --- */
         header {
             background-color: var(--branco);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
@@ -45,111 +42,78 @@
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 0.8rem 2rem; /* Ajustado ligeiramente para acomodar a logo maior */
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items: center;
         }
 
-        .brand-logos {
+        .brand-logo-container {
             display: flex;
-            flex-direction: column;
+            align-items: center;
         }
 
-        .brand-title {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--verde-escuro);
-            letter-spacing: 1px;
+        /* --- LOGO AMPLIADO PARA 95PX --- */
+        .brand-logo-container img {
+            height: 95px; /* Aumentado de 75px para 95px */
+            width: auto;
+            display: block;
         }
 
-        .brand-subtitle {
-            font-size: 0.8rem;
-            color: #718096;
+        /* --- CONTAINER DA IMAGEM PRINCIPAL --- */
+        .banner-section {
+            max-width: 1100px;
+            margin: 2.5rem auto 0 auto;
+            padding: 0 1.5rem;
         }
 
-        /* --- HERO SECTION --- */
-        .hero {
-            background: linear-gradient(135deg, rgba(27, 133, 54, 0.95) 0%, rgba(0, 77, 26, 0.95) 100%), 
-                        url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1200') no-repeat center center/cover;
-            color: var(--branco);
-            padding: 6rem 2rem 8rem 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-badge {
-            background-color: var(--branco);
-            color: var(--verde-principal);
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            display: inline-block;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: -1px;
-        }
-
-        .hero h1 span {
-            color: var(--verde-destaque);
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            max-width: 700px;
-            margin: 0 auto 2.5rem auto;
-            font-weight: 400;
-            opacity: 0.9;
-        }
-
-        .hero-tagline {
-            background-color: rgba(255, 255, 255, 0.15);
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            display: inline-block;
-            font-weight: 600;
-            border-left: 4px solid var(--verde-destaque);
-        }
-
-        /* Curva decorativa (Wave) */
-        .wave-decorator {
-            position: absolute;
-            bottom: 0;
-            left: 0;
+        .banner-wrapper {
             width: 100%;
+            border-radius: 20px;
             overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
             line-height: 0;
         }
 
-        .wave-decorator svg {
-            position: relative;
+        .banner-wrapper img {
+            width: 100%;
+            height: auto;
             display: block;
-            width: calc(130% + 1.3px);
-            height: 60px;
         }
 
-        .wave-decorator .shape-fill {
-            fill: var(--cinza-fundo);
+        /* --- ÁREA CENTRAL ENTRE AS DUAS IMAGENS (BOTÃO) --- */
+        .cta-container {
+            text-align: center;
+            padding: 3rem 1rem;
         }
 
-        /* --- PILARES / CARDS --- */
+        .cta-button {
+            display: inline-block;
+            background-color: #ffb703;
+            color: #023047;
+            padding: 1.2rem 3.5rem;
+            font-weight: 700;
+            font-size: 1.3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            background-color: var(--verde-escuro);
+            color: var(--branco);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.25);
+        }
+
+        /* --- SEÇÃO DOS PILARES (CARDS BRANCOS) --- */
         .pillars {
             max-width: 1100px;
-            margin: -4rem auto 4rem auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 10;
+            margin: 0 auto 4rem auto;
+            padding: 0 1.5rem;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
@@ -157,121 +121,84 @@
 
         .pillar-card {
             background: var(--branco);
-            padding: 2.5rem 2rem;
-            border-radius: 16px;
+            padding: 3rem 2rem;
+            border-radius: 24px;
             text-align: center;
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-            border-bottom: 4px solid transparent;
-        }
-
-        .pillar-card:hover {
-            transform: translateY(-5px);
-            border-bottom-color: var(--verde-principal);
         }
 
         .pillar-icon {
             font-size: 2.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             display: block;
         }
 
         .pillar-card h3 {
             color: var(--verde-escuro);
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
+            font-size: 1.35rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
         }
 
-        /* --- SEÇÃO DO FORMULÁRIO (PESQUISA) --- */
+        .pillar-card p {
+            color: #4a5568;
+            font-size: 1rem;
+        }
+
+        /* --- SEÇÃO DO FORMULÁRIO AJUSTADA --- */
         .form-section {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto 5rem auto;
-            padding: 0 2rem;
-            text-align: center;
+            padding: 0 1.5rem;
         }
 
         .form-container {
             background: var(--branco);
-            padding: 3rem 2rem;
+            padding: 2.5rem 2rem;
             border-radius: 24px;
             box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.07);
-            border: 1px solid rgba(27, 133, 54, 0.1);
+            text-align: center;
         }
 
         .form-container h2 {
             color: var(--verde-escuro);
-            margin-bottom: 1rem;
-            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
         }
 
-        .form-container p {
-            margin-bottom: 2rem;
-            color: #4a5568;
-        }
-
-        /* Responsividade para o Iframe do Google Forms */
         .iframe-wrapper {
             position: relative;
-            overflow: hidden;
             width: 100%;
-            padding-top: 120%; /* Ajuste a altura proporcional do formulário por aqui */
+            height: 600px;
             border-radius: 12px;
             border: 1px solid #e2e8f0;
+            overflow: hidden;
         }
 
         .iframe-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
             border: 0;
         }
 
-        /* --- FOOTER --- */
         footer {
             background-color: var(--verde-escuro);
             color: var(--branco);
-            padding: 3rem 2rem;
+            padding: 2.5rem 2rem;
             text-align: center;
+            font-size: 0.9rem;
         }
 
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .footer-url {
-            color: var(--verde-destaque);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        .footer-url:hover {
-            text-decoration: underline;
-        }
-
-        .footer-copy {
-            font-size: 0.85rem;
-            opacity: 0.7;
-            margin-top: 1.5rem;
-        }
-
-        /* --- RESPONSIVIDADE --- */
+        /* Ajustes de Responsividade */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.3rem;
+            .iframe-wrapper {
+                height: 700px;
             }
-            .hero {
-                padding: 4rem 1rem 6rem 1rem;
-            }
-            .pillars {
-                margin-top: -2rem;
+        }
+
+        @media (max-width: 480px) {
+            .brand-logo-container img {
+                height: 60px; /* Logo um pouco maior também nos telemóveis, mantendo a proporção */
             }
         }
     </style>
@@ -280,53 +207,45 @@
 
     <header>
         <div class="nav-container">
-            <div class="brand-logos">
-                <span class="brand-title">SECRETARIA DE MEIO AMBIENTE</span>
-                <span class="brand-subtitle">Prefeitura de Serra Talhada</span>
+            <div class="brand-logo-container">
+                <img src="src/logo_horizontal.png" alt="Logo Oficial - Prefeitura de Serra Talhada">
             </div>
-            <div style="font-size: 1.5rem;">🌱</div>
         </div>
     </header>
 
-    <section class="hero">
-        <span class="hero-badge">Youth Climate Action Fund – YCAF</span>
-        <h1>Clima em <span>Ação</span></h1>
-        <p class="hero-subtitle">Inove hoje, transforme o amanhã! Serra Talhada rumo ao desenvolvimento sustentável comandado pela nossa juventude.</p>
-        <div class="hero-tagline">Jovens transformando ideias em soluções para o clima.</div>
-        
-        <div class="wave-decorator">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" preserveAspectRatio="none">
-                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,42.4V0Z" class="shape-fill"></path>
-            </svg>
+    <section class="banner-section">
+        <div class="banner-wrapper">
+            <img src="src/banner.jpg" alt="Clima em Ação - Banner Principal">
         </div>
     </section>
+
+    <div class="cta-container">
+        <a href="#pesquisa" class="cta-button">📝 Responder Pesquisa Agora</a>
+    </div>
 
     <section class="pillars">
         <div class="pillar-card">
             <span class="pillar-icon">💡</span>
             <h3>Ideias que Inspiram</h3>
-            <p>Estimulando o pensamento crítico e a criatividade voltada para os desafios ambientais locais.</p>
+            <p>Estimulando a criatividade voltada para os desafios ambientais locais.</p>
         </div>
         <div class="pillar-card">
             <span class="pillar-icon">👥</span>
             <h3>Juventude que Transforma</h3>
-            <p>O protagonismo jovem liderando ações e moldando o futuro ecológico de Serra Talhada.</p>
+            <p>O protagonismo jovem moldando o futuro ecológico do município.</p>
         </div>
         <div class="pillar-card">
             <span class="pillar-icon">🌍</span>
             <h3>Soluções que Protegem</h3>
-            <p>Aplicações práticas e projetos viáveis que mitigam os impactos climáticos no nosso amanhã.</p>
+            <p>Aplicações práticas que mitigam os impactos climáticos no amanhã.</p>
         </div>
     </section>
 
-    <section class="form-section">
+    <section class="form-section" id="pesquisa">
         <div class="form-container">
-            <h2>Participe da Nossa Pesquisa</h2>
-            <p>Sua voz é fundamental para construirmos soluções climáticas eficientes. Responda ao formulário abaixo e colabore com a Secretaria de Meio Ambiente.</p>
-            
+            <h2>Formulário de Participação</h2>
             <div class="iframe-wrapper">
-                <iframe 
-                    src="https://docs.google.com/forms/d/e/1FAIpQLSfxxxxxxxxx/viewform?embedded=true">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScYHuqA1cJGQ67Na33mp6Rl86ILmGLW4XuTpgRxEOZax7TXLA/viewform?embedded=true">
                     Carregando formulário...
                 </iframe>
             </div>
@@ -334,11 +253,7 @@
     </section>
 
     <footer>
-        <div class="footer-content">
-            <p>SAIBA MAIS E PARTICIPE:</p>
-            <a href="https://www.serratalhada.pe.gov.br/climaemacao" target="_blank" class="footer-url">www.serratalhada.pe.gov.br/climaemacao</a>
-            <p class="footer-copy">&copy; 2026 Secretaria de Meio Ambiente - Prefeitura de Serra Talhada. Trabalho Sempre.</p>
-        </div>
+        <p>© 2026 Produzido pelo NTI Núcleo de Tecnologia da Informação da prefeitura de Serra Talhada.</p>
     </footer>
 
 </body>
